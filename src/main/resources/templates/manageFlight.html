@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Add Flight</title>
+	<link rel="stylesheet" href="#" th:href="@{https://cdn.jsdelivr.net/npm/water.css@2/out/water.css}" />
+</head>
+<body>
+
+	<h3><a th:href="@{/addFlight}">Add Flight</a></h3>
+	<h3><a th:href="@{/manageFlight}">Manage Flight</a></h3>
+
+
+			<h6  style = "color=#7386D5;">Available Flights</h6>
+				<table id="dataTable" >
+					<thead>
+					<tr>
+						<th>FlightID</th>
+						<th>Flight Name</th>
+						<th>Seating Capacity</th>
+						<th>Cities</th>
+						<th>Delete</th>
+						<th></th>
+					</tr>
+					</thead>
+
+					<tbody>
+					<tr th:each="bean : ${flights}">
+						<td th:text="${bean.flight_id}">FlightID</td>
+						<td th:text="${bean.flight_name}">Flight Name</td>
+						<td th:text="${bean.seating_capacity}">Seating Capacity</td>
+						<td th:text="${bean.cities}">City</td>
+						<td><a th:href="@{/deleteFlight(flight_id=${bean.flight_id})}"><button type="button" data-toggle="tooltip" data-placement="top" title="Delete"></button></a></td>
+					</tr>
+					</tbody>
+				</table>
+
+</body>
+</html>

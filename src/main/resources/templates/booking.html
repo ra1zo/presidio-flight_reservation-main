@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking - Presidio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+</head>
+<body>
+<h1>Bookings</h1>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out">
+</form>
+
+
+<form method = "POST" th:action="@{/booking}" th:object="${bookings}" name="addBookingForm" onsubmit="return validate()" >
+
+
+    <h5>From City:</h5>
+    <input type="text" th:field="*{departureCity}" name="departureCity" id="departureCity" placeholder="Enter City">
+
+
+
+    <h5>To City:</h5>
+    <input type="text" th:field="*{arrivalCity}" name="arrivalCity"  id="arrivalCity" placeholder="Enter arrival City">
+
+
+
+    <h5>Flight:<</h5>
+    <input type="text" th:field="*{operatingAirlines}" name="operatingAirlines" id="operatingAirlines" placeholder="Enter Flight">
+
+
+
+
+    <h5>Passenger:</h5>
+    <input type="text" th:field="*{passenger}" name="passenger"  id="passenger" placeholder="Enter passenger">
+    <br>
+
+
+    <h5>Date:</h5>
+    <input type="text" th:field="*{dateOfDeparture}" name="dateOfDeparture"  id="dateOfDeparture" placeholder="Enter date">
+    <br>
+
+    <input type="submit" value="Add">
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Add Flight</title>
+	<link rel="stylesheet" href="#" th:href="@{https://cdn.jsdelivr.net/npm/water.css@2/out/water.css}" />
+</head>
+<body>
+
+	<h3><a th:href="@{/addFlight}">Add Flight</a></h3>
+	<h3><a th:href="@{/manageFlight}">Manage Flight</a></h3>
+
+			<form method = "POST" th:action="@{/addFlight}" th:object="${flights}" name="addFlightForm" onsubmit="return validate()" >
+
+
+				<h5>FlightID</h5>
+				<input type="text" th:field="*{flight_id}" name="flightID" id="flightID" placeholder="Enter Flight ID">
+
+
+
+				<h5>Flight Name</h5>
+				<input type="text" th:field="*{flight_name}" name="flightName"  id="flightName" placeholder="Enter Flight Name">
+
+
+
+				<h5>Seating Capacity</h5>
+				<input type="text" th:field="*{seating_capacity}" name="capacity" id="capacity" placeholder="Enter Seating Capacity">
+
+
+
+
+				<h5>City</h5>
+				<input type="text" th:field="*{cities}" name="cities"  id="cities" placeholder="Enter City">
+				<br>
+
+				<input type="submit" value="Add">
+
+				<script>
+					function validate() {
+						if( document.forms["addFlightForm"]["flightID"].value == "" ) {
+							alert( "Please provide the flights name!" );
+							document.forms["addFlightForm"]["flightID"].focus();
+							return false;
+						}
+						if( document.forms["addFlightForm"]["flightName"].value == "" ) {
+							alert( "Please provide the flights name!" );
+							document.forms["addFlightForm"]["flightName"].focus();
+							return false;
+						}
+						if(isNaN(document.getElementById("capacity").value) || document.getElementById("capacity").value==0) {
+							alert( "Please provide the seating capacity!" );
+							document.forms["addFlightForm"]["capacity"].focus();
+							return false;
+						}
+						if(isNaN(document.getElementById("cities").value) || document.getElementById("reservationCapacity").value==0) {
+							alert( "Please provide the City!" );
+							document.forms["addFlightForm"]["cities"].focus();
+							return false;
+						}
+					}
+				</script>
+</body>
+</html>
